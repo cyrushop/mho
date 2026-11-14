@@ -46,6 +46,16 @@
     pigAnja: ['piglife 蠻顎龍的鱗Ⅳ', 'https://piglife.tw/monster-hunter-outlanders/items/640071/'],
     ldMidori: ['LDPlayer 彌多律攻略', 'https://www.ldplayer.tw/blog/monster-hunter-outlanders-midori-guide.html'],
     qbnews: ['QBNews 新手指南', 'https://www.qbnews.tw/monster-hunter-outlanders-beginner-tips/'],
+    g8midori: ['Game8 彌多律', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/602026'],
+    g8dawn: ['Game8 光稜火太刀', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/637150'],
+    g8apex: ['Game8 主宰武器一覽', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/636621'],
+    gwApex: ['GameWith 主宰武器', 'https://gamewith.ai/monster-hunter-outlanders/en/articles/apex-weapons'],
+    gwTeam: ['GameWith 隊伍', 'https://gamewith.ai/monster-hunter-outlanders/en/articles/best-team'],
+    bahaMidori2: ['巴哈姆特 彌多律心得', 'https://forum.gamer.com.tw/C.php?bsn=81450&snA=278'],
+    ldBuddy: ['LDPlayer 隨從強度榜', 'https://www.ldplayer.tw/blog/monster-hunter-outlanders-buddy-tier-list.html'],
+    ldTeam: ['LDPlayer 陣容懶人包', 'https://www.ldplayer.tw/blog/monster-hunter-outlanders-team-guide.html'],
+    ldTier: ['LDPlayer 角色強度排行', 'https://www.ldplayer.tw/blog/monster-hunter-outlanders-adventurers-tier-list.html'],
+    ytCombo: ['YouTube 彌多律小教室', 'https://www.youtube.com/shorts/kTNeL_p55dA'],
   };
 
   const AR = { level: 46, cap: 10, conf: 'one', src: ['gwCraft', 'gwLimit', 'qbnews'],
@@ -54,15 +64,47 @@
   const DU = '火屬性傷害提升〔暫譯：Fire Damage Up〕';
   const SBB = '練氣增傷技能〔暫譯：Spirit Bind Blade〕';
 
+  // 彌多律專用（火屬性太刀、SSR 進擊型）
+  const MIDORI = {
+    title: '🌸 彌多律 · 火屬性太刀',
+    role: { text: 'SSR 進擊型、全火特化：用其他屬性太刀傷害出唔到。多數攻略列為 T0；弱點係缺少對空招式，打飛行魔物輸出會打折扣', conf: 'ok', src: ['bahaMidori2', 'ldTier', 'ldMidori'] },
+    weapon: [
+      { text: '首選：光稜火太刀〔暫譯：Dawnlit Joyeuse〕＝光稜龍主宰武器（打造時揀火屬性）。火屬性版本嘅屬性值同物理值係所有火太刀之中最高', conf: 'ok', src: ['g8midori', 'g8dawn', 'bahaMidori', 'gwApex'] },
+      { text: '解鎖條件：冒險等級 40 ＋ 完成主線任務〔暫譯：Sound the Horn Here〕，之後喺主宰挑戰打光稜龍。你 46 級已經夠', conf: 'one', src: ['g8dawn'] },
+      { text: '打造素材：融光結晶〔暫譯：Radiant Crystal〕×12 ＋ 融光寶玉〔暫譯：Radiant Gem〕×1。普通同主宰難度首次通關各送一粒寶玉', conf: 'one', src: ['g8dawn'] },
+      { text: '注意：主宰武器可能只係喺主宰挑戰、魔物挑戰同限時野外挑戰先發揮全力，平時狩獵未必最強，所以火龍太刀Ⅳ都值得做', conf: 'one', src: ['gwApex'], note: '呢點係另一個網站轉述 GameWith 嘅講法，未直接睇到原文。' },
+    ],
+    visage: [
+      { text: '繪影套裝：「灼焰」湊 4 件。2 件：火屬性傷害 +5%；4 件：命中弱點後自身火屬性傷害 +24%，持續 20 秒。太刀段數多，4 件效果幾乎常駐', conf: 'ok', src: ['g8midori', 'ldMidori', 'bahaMidori'] },
+      { text: '核心繪影：融光種雌火龍（首選）；巴哈姆特攻略亦推薦光稜龍', conf: 'ok', src: ['g8midori', 'bahaMidori'] },
+    ],
+    buddy: { text: '隨從：小次郎（彌多律專屬搭配，觸發裂破時提升火屬性同傷害）', conf: 'ok', src: ['g8midori', 'gwMidori', 'ldBuddy'] },
+    team: [
+      { text: '隊友：菈雅（火屬性控場、減益）＋ 御谷龍之介（火屬性支援、全隊火傷增益）＋ 光赫（控場、閃光）', conf: 'ok', src: ['g8midori', 'bahaMidori'] },
+      { text: '另一個配法：彌多律 ＋ 主角（拎火屬性武器）＋ 御谷龍之介 ＋ 菈雅，全火隊', conf: 'one', src: ['ldTeam'], note: '主角係全屬性專精，拎火屬性武器就會啟用加成。' },
+    ],
+    insight: [
+      { text: '命座 1：單人揀「剎那餘音」（完美閃避判定放大，擦邊都觸發，之後招式二可以取消前搖）；組隊要控場或者拚傷害揀「清音不息」', conf: 'ok', src: ['bahaMidori', 'bahaMidori2'] },
+      { text: '命座 2：「楓時雅致」（招式二或者完美閃避命中可以疊傷害）；命座 3：「楓時殘響」（用雅致嘅疊傷強化招式三）', conf: 'one', src: ['bahaMidori2'] },
+      { text: '3 命參考搭配：單人＝剎那餘音＋清音不息＋楓時雅致；極限輸出＝清音不息＋楓時雅致＋楓時殘響。命座可以隨時重置', conf: 'one', src: ['bahaMidori'] },
+    ],
+    combo: [
+      { text: '開場快速紅刃：長按招式一（氣刃大迴旋）→ 閃吼 → 普攻三下（無雙氣刃斬）→ 招式二（櫻花氣刃斬）', conf: 'one', src: ['ytCombo', 'bahaMidori'] },
+      { text: '基本循環：普攻或閃避反擊補滿練氣 → 招式二升階到黃刃、紅刃 → 有空檔用招式一集氣斬補傷害 → 魔物倒地或者暈嗰陣用招式三爆發收尾', conf: 'one', src: ['ldMidori'] },
+    ],
+    armorNote: { text: '防具：用下面嗰套火屬性太刀 5 件（出自巴哈姆特彌多律專用攻略）', conf: 'ok', src: ['bahaMidori'],
+      note: 'Game8 另外建議：打融光種用火屬性配裝；打普通魔物可以考慮居合拔刀〔暫譯：Flash Draw〕配裝。GameWith 嘅彌多律配裝就主打反擊強化〔暫譯：Counter Boost〕＋ 練氣增傷技能。' },
+  };
+
   // 火屬性太刀・冒險等級 46（稀有度 10）。名稱帶「Ⅳ」嘅係稀有度 10 階段。
   const LS_FIRE = {
-    title: '🔥 火屬性太刀 · 冒險等級 46（稀有度 10）',
+    title: '🔥 防具配裝 · 冒險等級 46（稀有度 10）',
     skills: { text: `目標技能：${DU} Lv7 ＋ ${SBB} Lv4，另加防彈刀技能〔暫譯：Instinct〕`, conf: 'ok', src: ['gwls', 'g8ls', 'bahaMidori'],
       note: '巴哈姆特攻略：目前版本屬性強化收益好高，建議優先將火屬性強化疊滿。' },
     du: { text: `${DU} Lv7（滿級）：屬性攻擊 +50、火屬性傷害 +28%（對融光種 +70%）`, conf: 'ok', src: ['g8hbg', 'g8db', 'g8bow'] },
     sbb: { text: `${SBB} Lv4：練氣計量表升階後短時間內，傷害 +16%、屬性攻擊 +25`, conf: 'one', src: ['g8sbb'] },
     weapon: {
-      name: '首選：光稜龍主宰武器（火屬性太刀，即「光稜火太刀」）',
+      name: '首選：光稜火太刀（光稜龍主宰武器，詳情見上面彌多律部分）',
       conf: 'ok', src: ['bahaMidori', 'ludRuger', 'g8ls'],
       note: '主宰武器可以自選火、水、雷、冰、龍其中一種屬性打造。',
       alt: '冇主宰武器就用：火龍太刀Ⅳ〔暫譯：Wyvern Blade "Blood" IV〕（由火龍太刀Ⅱ〔暫譯：Wyvern Blade "Fall" II〕升到稀有度 10）',
@@ -246,6 +288,21 @@
         el('div', { class: 'small-text' }, srcLinks(st.src)))))));
   }
 
+  function renderMidori() {
+    const m = MIDORI;
+    return el('div', { class: 'card result full' },
+      el('h2', {}, m.title),
+      fact(m.role),
+      el('h3', {}, '武器'), m.weapon.map(fact),
+      el('h3', {}, '防具'), fact(m.armorNote),
+      el('h3', {}, '繪影'), m.visage.map(fact),
+      el('h3', {}, '隨從'), fact(m.buddy),
+      el('h3', {}, '隊伍'), m.team.map(fact),
+      el('h3', {}, '命座（心得）'), m.insight.map(fact),
+      el('h3', {}, '操作'), m.combo.map(fact),
+    );
+  }
+
   function renderBuild() {
     const b = LS_FIRE;
     const w = b.weapon;
@@ -272,8 +329,6 @@
       b.pieces.map(p => el('details', {},
         el('summary', {}, p.part, '：', rich(p.name)),
         stepTable(p.steps))),
-      el('h3', {}, '繪影'),
-      fact(b.visage),
       el('h3', {}, '素材喺邊度打'),
       b.drops.map(fact),
       el('h3', {}, '狩玉Ⅳ 總數'),
@@ -341,7 +396,7 @@
       JADE_SOURCES.map(fact),
     );
 
-    root.replaceChildren(head, renderBuild(), el('h2', { class: 'section-title' }, '其他屬性'), el('div', { class: 'card', style: 'padding:8px' }, tabs), body, jade);
+    root.replaceChildren(head, renderMidori(), renderBuild(), el('h2', { class: 'section-title' }, '其他屬性'), el('div', { class: 'card', style: 'padding:8px' }, tabs), body, jade);
     show(ELEMENTS.some(e => e.id === current) ? current : 'fire');
   }
 
