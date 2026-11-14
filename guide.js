@@ -109,6 +109,7 @@
     if (text == null) return '';
     return String(text).replace(/〔暫譯：(.*?)〕/g, (_, en) => { if (ens) ens.push(en); return '＊'; });
   }
+  function footText(t) { return String(t).replace(/〔暫譯：(.*?)〕/g, '＊（$1）'); }
   function dot(c) { return el('span', { class: 'dot dot-' + c, title: CONF[c], 'aria-label': CONF[c] }); }
   function srcLink(s) {
     const [label, url] = Array.isArray(s) ? s : (SRC[s] || [s, null]);
@@ -231,7 +232,7 @@
       // 武器
       if (combo && combo.weapon) {
         out.push(card('🗡️ 武器', table(['用途', '推薦'], combo.weapon.map(x => ({
-          cells: [x.k, [plain(x.v), x.needAR && ar < x.needAR ? el('div', { class: 'warn-text' }, `要冒險等級 ${x.needAR}`) : null]],
+          cells: [x.k, [plain(x.v), x.sub ? el('div', { class: 'sub-text' }, x.sub) : null, x.needAR && ar < x.needAR ? el('div', { class: 'warn-text' }, `要冒險等級 ${x.needAR}`) : null]],
           c: x.c, src: x.src, note: x.note, texts: [x.v], ens: x.ens,
         })), ['k'])));
       }
@@ -251,11 +252,11 @@
             cells: [x.part, [el('div', {}, plain(x.main)), x.skill ? el('div', { class: 'sub-text' }, plain(x.skill)) : null]].concat(hasEarly ? [x.early || ''] : []),
             c: x.c, src: x.src, note: x.note, texts: [x.main, x.skill], ens: x.ens,
           })), ['part', null, 'early']),
-          combo.armorFoot ? el('p', { class: 'foot' }, plain(combo.armorFoot)) : null));
+          combo.armorFoot ? el('p', { class: 'foot' }, footText(combo.armorFoot)) : null));
       } else {
         out.push(card('🛡️ 防具（通用配法）', table(['項目', '內容'], [
           { cells: ['核心', plain(E.core.text)], c: E.core.c, src: E.core.src, note: E.core.note, texts: [E.core.text], ens: E.core.ens },
-        ], ['k'])));
+        ], ['k']), combo && combo.armorFoot ? el('p', { class: 'foot' }, footText(combo.armorFoot)) : null));
       }
 
       // 套裝效果 + 其後
