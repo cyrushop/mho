@@ -10,6 +10,7 @@ Monster Hunter Outlanders（手機版，2026-10-29 全球上線）嘅防具配�
 - **素材**：每個組合列出總素材數量，自動扣除已標記「已有」嘅防具，可選包括升級素材，可一鍵複製
 - **防具庫**：搜尋、標記「已有」／「排除」
 - **數據**：匯入 JSON／CSV、合併、匯出；全部存喺瀏覽器 `localStorage`
+- **PWA**：可加到手機主畫面、離線使用（數據檔優先用網絡最新版，離線時用快取）
 
 ## ⚠ 數據狀態
 `data/mho-data.json` 而家**冇防具數據**：建立時嘅雲端環境網絡政策封鎖咗 gamewith.ai、game8.co 等數據來源，所以冇填入未核實嘅數字。
@@ -22,6 +23,7 @@ Monster Hunter Outlanders（手機版，2026-10-29 全球上線）嘅防具配�
 1. Repo → **Settings → Pages**
 2. Source 揀 **Deploy from a branch**，branch 揀 `main`，folder 揀 `/ (root)`
 3. 網址會係 `https://cyrushop.github.io/mho/`
+4. 用手機開網址 → iPhone Safari：分享 →「加至主畫面」；Android Chrome：選單 →「安裝應用程式」
 
 ## 本機試
 ```sh
