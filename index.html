@@ -202,6 +202,18 @@
   .total .muted { font-size: 12px; }
   details.other > summary { font-weight: 600; font-size: 15px; color: var(--text); padding: 2px 0; }
   details.other[open] > summary { margin-bottom: 8px; }
+  .el-top { position: sticky; top: 0; z-index: 4; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
+    margin: 0 -16px; padding: 8px 16px; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .el-top button { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 2px; min-height: 48px; font-size: 13px; border-radius: 12px; }
+  .el-top button .ico { font-size: 18px; line-height: 1.2; }
+  .el-top button[aria-selected="true"] { background: var(--accent); color: #fff; border-color: transparent; font-weight: 700; }
+  .wp-label { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  .wp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px; }
+  .wp-grid button { padding: 8px 2px; min-height: 40px; font-size: 14px; }
+  .wp-grid button[aria-selected="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--text); font-weight: 700; }
+  .page-title { font-size: 18px; margin: 18px 2px 4px; }
+  .card.notice { border-color: var(--warn); background: var(--warn-soft); font-size: 14px; }
+  .card.notice .muted { font-size: 13px; margin-top: 4px; }
   .hidden { display: none !important; }
   .stat { display: inline-block; margin-right: 14px; }
   .stat b { font-size: 18px; }
@@ -210,7 +222,7 @@
 <body>
 <header>
   <h1>旅人配裝器</h1>
-  <div class="sub">魔物獵人：旅人 · 彌多律火太刀 · 冒險等級 46 配裝同升級素材</div>
+  <div class="sub">魔物獵人：旅人 · 五屬性最強配裝同升級素材</div>
 </header>
 
 <main>
@@ -368,6 +380,7 @@
 </nav>
 
 <script src="optimizer.js"></script>
+<script src="builds.js"></script>
 <script src="guide.js"></script>
 <script src="app.js"></script>
 <script>MHO_GUIDE.render(document.getElementById('tab-guide'));</script>
