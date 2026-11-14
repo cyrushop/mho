@@ -32,10 +32,68 @@
     gwRGJ: ['GameWith Radiant Great Jagras', 'https://gamewith.ai/monster-hunter-outlanders/en/armor/radiant-great-jagras'],
     gwPukei: ['GameWith Radiant Pukei Hood', 'https://gamewith.ai/monster-hunter-outlanders/en/armor/radiant-pukei-pukei/head'],
     gwRHB: ['GameWith Rath Heart Braces', 'https://gamewith.ai/monster-hunter-outlanders/en/armor/pink-rathian/arms'],
+    g8ls: ['Game8 太刀', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/618475'],
+    g8ryu: ['Game8 Ryunosuke', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/635035'],
+    g8sbb: ['Game8 Spirit Bind Blade', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/636336'],
+    g8rathDrop: ['Game8 Rathalos 掉落', 'https://game8.co/games/Monster-Hunter-Outlanders/archives/635396'],
+    gwls: ['GameWith 太刀', 'https://gamewith.ai/monster-hunter-outlanders/en/articles/best-long-sword-builds'],
+    gwBest: ['GameWith 全武器配裝', 'https://gamewith.ai/monster-hunter-outlanders/en/articles/best-builds'],
+    gwMidori: ['GameWith Midori', 'https://gamewith.ai/monster-hunter-outlanders/en/adventurers/midori'],
+    gwArmor: ['GameWith 防具表', 'https://gamewith.ai/monster-hunter-outlanders/en/armor'],
+    gwWBB: ['GameWith Wyvern Blade Blood', 'https://gamewith.ai/monster-hunter-outlanders/en/weapons/wyvern-blade-blood'],
+    gwRS4: ['GameWith Rathalos Scale IV', 'https://gamewith.ai/monster-hunter-outlanders/en/items/rathalos-scale-4'],
   };
 
   const AR = { level: 46, cap: 10, conf: 'one', src: ['gwCraft', 'gwLimit'],
     note: 'AR44 解鎖 ★10、AR47 解鎖 ★11，所以 AR46 嘅升級上限係 ★10。AR44 呢個點只得 GameWith 武器製作攻略一個來源。' };
+
+  // Fire Long Sword at AR46 (★10). Pieces named "IV" are the ★10 tier.
+  const LS_FIRE = {
+    title: '🔥 火屬性太刀 · AR46（★10）',
+    skills: { text: '目標技能：Fire Damage Up Lv7 ＋ Spirit Bind Blade Lv4，另加 Instinct 防彈刀', conf: 'ok', src: ['gwls', 'g8ls'] },
+    sbb: { text: 'Spirit Bind Blade Lv4：氣刃量表升級後短時間內傷害 +16%、屬性攻擊 +25', conf: 'one', src: ['g8sbb'] },
+    weapon: {
+      name: 'Wyvern Blade "Blood" IV（★10，由 Wyvern Blade "Fall" II 升上嚟）',
+      conf: 'ok', src: ['g8ls', 'gwMidori', 'g8ryu'],
+      note: 'Game8：未有 Apex 武器嘅話，係可以鍛造同升級嘅最強火太刀。',
+      steps: [
+        { r: '★9', mats: "Hunter's Jade IV ×2、Rathalos Scale III ×3、Rathalos Shell III ×3", conf: 'one', src: ['gwWBB'] },
+        { r: '★10', mats: 'Rathalos Scale IV ×3（其餘素材搵唔到）', conf: 'one', src: ['gwRS4'] },
+      ],
+    },
+    pieces: [
+      { part: '頭', name: 'Rath Heart Helm IV', from: 'Pink Rathian', skill: 'Fire Damage Up', conf: 'ok', src: ['gwBest', 'g8ryu'],
+        steps: [
+          { r: '★10', mats: "Hunter's Jade IV ×2、Pink Rathian Carapace IV ×3、Pink Rathian Scale+ IV ×3、Rathian Plate IV ×3", conf: 'one', src: ['g8pink'],
+            note: 'Game8 標題係「鍛造素材」，冇寫明係邊一級，但同 ★10 嘅規律吻合。' },
+        ] },
+      { part: '胸', name: 'Rathalos Mail IV', from: 'Rathalos', skill: 'Fire Damage Up Lv3（★10）', conf: 'ok', src: ['gwBest', 'g8ryu', 'gwRath', 'g8rath'],
+        steps: [
+          { r: '★6 製作', mats: "Hunter's Jade II ×1、Rathalos Shell II ×2（Game8 另加 Rathalos Scale II ×2）", conf: 'diff', src: ['gwRath', 'g8rath'] },
+          { r: '★7', mats: "Hunter's Jade III ×2、Rathalos Scale II ×3、Rathalos Shell II ×3", conf: 'one', src: ['gwRath'], note: 'GameWith 頁面標題重複，未能 100% 確定呢個表係胸甲。' },
+          { r: '★8', mats: null, conf: 'none', src: [] },
+          { r: '★9', mats: null, conf: 'none', src: [] },
+          { r: '★10', mats: "Hunter's Jade IV ×2、Rathalos Scale IV ×3、Rathalos Shell IV ×3", conf: 'one', src: ['gwRath'] },
+        ] },
+      { part: '腕', name: 'Jagras Vambraces IV', from: 'Great Jagras', skill: 'Spirit Bind Blade Lv2、Deterrence Lv1', conf: 'one', src: ['gwBest', 'gwMidori', 'gwArmor'],
+        steps: [] },
+      { part: '腰', name: 'Anja Coil IV', from: 'Anjanath', skill: 'Fire Damage Up', conf: 'one', src: ['gwBest', 'fxAnja'],
+        steps: [
+          { r: '★3 製作', mats: "Hunter's Jade I ×1、Anjanath Scale I ×1、Fang I ×1、Nosebone I ×1、Tail I ×1", conf: 'ok', src: ['fxAnja', 'g8anja'] },
+          { r: '★4–10', mats: null, conf: 'none', src: [] },
+        ] },
+      { part: '腳', name: 'Rath Heart Greaves IV', from: 'Pink Rathian', skill: '未核實', conf: 'one', src: ['gwBest'],
+        steps: [] },
+    ],
+    caveats: [
+      { text: '呢 5 件嘅組合出自 GameWith「全武器配裝」嘅太刀推介。頭、胸同 Game8 Ryunosuke 火太刀一致；腕、腰、腳只有 GameWith 一個來源。搜尋摘要冇寫明呢套係專為火屬性而配，係按件數技能推斷。', conf: 'one', src: ['gwBest', 'g8ryu'] },
+      { text: 'Spirit Bind Blade 已知只有 Jagras Vambraces 提供 Lv2，其餘 2 點喺邊件搵唔到資料。', conf: 'none', src: ['gwArmor'] },
+    ],
+    drops: [
+      { text: 'Rathalos Shell II：8–9★ Rathalos 掉落；Rathalos Shell III：10–11★ Rathalos 掉落', conf: 'one', src: ['g8rathDrop'] },
+    ],
+    jadeEstimate: '推算：假設每件都跟 King Beetle、Radiant Pukei 嘅規律（★9、★10 各要 Jade IV ×2），5 件防具由 ★8 升到 ★10 共需 20 粒 Hunter\'s Jade IV，連武器 ★9 嗰 2 粒就係 22 粒。研究點數商店 400 RP 換 3 粒、每週限 8 次（最多 24 粒），即大約 8 次、3,200 RP。武器 ★10 要幾多粒 Jade 未有資料。',
+  };
 
   const MAX_EFFECT = { text: '屬性傷害提升 Lv7（滿級）：屬性攻擊 +50、屬性傷害 +28%（對 Radiant 怪物 +70%）', conf: 'ok', src: ['g8hbg', 'g8db', 'g8bow'] };
 
@@ -146,6 +204,43 @@
       el('div', { class: 'small-text' }, srcLinks(f.src)));
   }
 
+  function stepTable(steps) {
+    if (!steps.length) return el('div', { class: 'small-text muted' }, badge('none'), ' 逐級素材搵唔到資料。');
+    return el('table', { class: 'steps' }, el('tbody', {}, steps.map(st => el('tr', {},
+      el('td', { class: 'part', style: 'width:64px' }, st.r),
+      el('td', {}, badge(st.conf), ' ', st.mats || '搵唔到資料',
+        st.note ? el('div', { class: 'small-text muted' }, st.note) : null,
+        el('div', { class: 'small-text' }, srcLinks(st.src)))))));
+  }
+
+  function renderBuild() {
+    const b = LS_FIRE;
+    return el('div', { class: 'card result full' },
+      el('h2', {}, b.title),
+      fact(b.skills), fact(b.sbb),
+      el('h3', {}, '武器'),
+      el('div', {}, badge(b.weapon.conf), ' ', el('b', {}, b.weapon.name)),
+      el('div', { class: 'small-text muted' }, b.weapon.note),
+      el('div', { class: 'small-text' }, srcLinks(b.weapon.src)),
+      stepTable(b.weapon.steps),
+      el('h3', {}, '防具 5 件'),
+      el('table', {}, el('tbody', {}, b.pieces.map(p => el('tr', {},
+        el('td', { class: 'part' }, p.part),
+        el('td', {}, badge(p.conf), ' ', el('b', {}, p.name),
+          el('div', { class: 'small-text muted' }, `${p.from} · ${p.skill}`),
+          el('div', { class: 'small-text' }, srcLinks(p.src))))))),
+      b.caveats.map(fact),
+      el('h3', {}, '逐件逐級素材'),
+      b.pieces.map(p => el('details', {},
+        el('summary', {}, `${p.part}：${p.name}`),
+        stepTable(p.steps))),
+      el('h3', {}, '素材喺邊度打'),
+      b.drops.map(fact),
+      el('h3', {}, "Hunter's Jade IV 總數"),
+      el('div', { class: 'note', style: 'margin:0' }, el('span', { class: 'conf conf-none' }, '推算'), ' ', b.jadeEstimate),
+    );
+  }
+
   function render(root) {
     let current = 'fire';
     try { current = localStorage.getItem('mho-guide-el') || 'fire'; } catch { /* ignore */ }
@@ -206,7 +301,7 @@
       JADE_SOURCES.map(fact),
     );
 
-    root.replaceChildren(head, el('div', { class: 'card', style: 'padding:8px' }, tabs), body, jade);
+    root.replaceChildren(head, renderBuild(), el('h2', { class: 'section-title' }, '其他屬性'), el('div', { class: 'card', style: 'padding:8px' }, tabs), body, jade);
     show(ELEMENTS.some(e => e.id === current) ? current : 'fire');
   }
 
