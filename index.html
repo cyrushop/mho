@@ -152,6 +152,17 @@
   .toggle.ex[aria-pressed="true"] { background: var(--bad-soft); }
   code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; }
   pre { background: var(--surface-2); padding: 10px; border-radius: 10px; overflow-x: auto; font-size: 12px; }
+  .conf { display: inline-block; font-size: 11px; line-height: 18px; padding: 0 6px; border-radius: 6px; white-space: nowrap; vertical-align: 1px; }
+  .conf-ok { background: var(--ok-soft); color: var(--ok); }
+  .conf-one { background: var(--warn-soft); color: var(--warn); }
+  .conf-diff { background: var(--bad-soft); color: var(--bad); }
+  .conf-none { background: var(--surface-2); color: var(--muted); }
+  .card h3 { font-size: 13px; color: var(--muted); font-weight: 600; margin: 14px 0 6px; }
+  .fact { padding: 4px 0; }
+  .srcs a { color: var(--accent); }
+  .el-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .el-tabs button { padding: 8px 4px; font-size: 14px; }
+  .el-tabs button[aria-selected="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--text); font-weight: 600; }
   .hidden { display: none !important; }
   .stat { display: inline-block; margin-right: 14px; }
   .stat b { font-size: 18px; }
@@ -160,11 +171,13 @@
 <body>
 <header>
   <h1>Outlanders 配裝器</h1>
-  <div class="sub">Monster Hunter Outlanders · 揀武器同 AR，搵最佳防具組合同所需素材</div>
+  <div class="sub">Monster Hunter Outlanders · AR46 各屬性配裝同升級素材</div>
 </header>
 
 <main>
-  <section id="tab-build">
+  <section id="tab-guide"></section>
+
+  <section id="tab-build" class="hidden">
     <div id="dataBanner"></div>
 
     <div class="card">
@@ -301,8 +314,11 @@
 </main>
 
 <nav class="tabs" role="tablist">
-  <button role="tab" data-tab="build" aria-selected="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>配裝
+  <button role="tab" data-tab="guide" aria-selected="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 4 6 6.5 6 11a6 6 0 0 1-12 0c0-3 1.5-5 3-6.5 0 2.5 1 4 3 4.5-1-3 0-6 0-9z"/></svg>屬性配裝
+  </button>
+  <button role="tab" data-tab="build" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>自訂計算
   </button>
   <button role="tab" data-tab="lib" aria-selected="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg>防具庫
@@ -313,7 +329,9 @@
 </nav>
 
 <script src="optimizer.js"></script>
+<script src="guide.js"></script>
 <script src="app.js"></script>
+<script>MHO_GUIDE.render(document.getElementById('tab-guide'));</script>
 <script>
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));

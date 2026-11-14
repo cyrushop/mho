@@ -4,15 +4,18 @@
     "version": "global launch 2026-10-29",
     "updated": "2026-11-14",
     "verified": false,
-    "notes": "防具／技能／素材數據未填入：建立時嘅雲端環境封鎖咗 gamewith.ai、game8.co 等數據網站。arCaps 只收錄攻略已列出嘅 4 個 AR→稀有度上限點（中間級數未核實）。",
+    "notes": "防具／技能／素材數據未填入：建立時嘅雲端環境封鎖咗 gamewith.ai、game8.co 等數據網站。arCaps 收錄攻略已列出嘅 6 個 AR→稀有度上限點（AR34→★8、AR44→★10 只有單一來源；其餘中間級數未核實）。",
     "sources": [
-      "https://gamewith.ai/monster-hunter-outlanders/en/articles/upgrade-limit-and-dismantle"
+      "https://gamewith.ai/monster-hunter-outlanders/en/articles/upgrade-limit-and-dismantle",
+      "https://gamewith.ai/monster-hunter-outlanders/en/articles/weapon-crafting-guide"
     ]
   },
   "arCaps": [
     { "ar": 16, "rarity": 3 },
     { "ar": 21, "rarity": 5 },
+    { "ar": 34, "rarity": 8 },
     { "ar": 41, "rarity": 9 },
+    { "ar": 44, "rarity": 10 },
     { "ar": 47, "rarity": 11 }
   ],
   "skills": [],

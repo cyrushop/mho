@@ -3,6 +3,7 @@
 Monster Hunter Outlanders（手機版，2026-10-29 全球上線）嘅防具配裝計算器。純 HTML/CSS/JS，冇 build step、冇外部依賴。
 
 ## 功能
+- **屬性配裝（首頁）**：AR46（升級上限 ★10）火／水／雷／冰／龍嘅核心配法、套裝效果、已知素材，同每升一級要嘅獵人玉。每項資料都標明「已核實／單一來源／來源矛盾／未有資料」同埋附來源連結（資料搜集於 2026-11-14）
 - **武器**：8 種上線武器（大劍、太刀、雙劍、大錘、長槍、盾斧、重弩、弓），可揀數據庫入面嘅具體武器或者手動輸入武器技能
 - **等級**：輸入冒險者等級（AR）自動計防具稀有度上限，亦可以手動揀
 - **目標技能**：自訂技能、目標等級、優先度（高／中／低）；支援套裝技能（按件數門檻）；部分武器有攻略建議技能
@@ -14,8 +15,8 @@ Monster Hunter Outlanders（手機版，2026-10-29 全球上線）嘅防具配�
 
 ## ⚠ 數據狀態
 `data/mho-data.json` 而家**冇防具數據**：建立時嘅雲端環境網絡政策封鎖咗 gamewith.ai、game8.co 等數據來源，所以冇填入未核實嘅數字。
-已收錄嘅只有 AR→稀有度上限 4 個數據點（AR16→★3、AR21→★5、AR41→★9、AR47→★11，來源：
-[GameWith](https://gamewith.ai/monster-hunter-outlanders/en/articles/upgrade-limit-and-dismantle)），中間級數未核實，app 會用保守值並提示。
+已收錄嘅只有 AR→稀有度上限 6 個數據點（AR16→★3、AR21→★5、AR34→★8、AR41→★9、AR44→★10、AR47→★11，來源：
+[GameWith 升級上限](https://gamewith.ai/monster-hunter-outlanders/en/articles/upgrade-limit-and-dismantle)、[GameWith 武器製作](https://gamewith.ai/monster-hunter-outlanders/en/articles/weapon-crafting-guide)；AR34、AR44 只有單一來源），其他中間級數未核實，app 會用保守值並提示。
 
 填數據方法：喺 app「數據」分頁匯入，或者直接編輯 `data/mho-data.json`（格式見 app 內說明）。
 

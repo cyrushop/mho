@@ -460,7 +460,7 @@
   });
   document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-    for (const t of ['build', 'lib', 'data']) $('tab-' + t).classList.toggle('hidden', t !== b.dataset.tab);
+    for (const t of ['guide', 'build', 'lib', 'data']) $('tab-' + t).classList.toggle('hidden', t !== b.dataset.tab);
     window.scrollTo(0, 0);
   }));
 
