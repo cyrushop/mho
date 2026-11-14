@@ -1,7 +1,7 @@
 {
-  "name": "Outlanders 配裝器",
-  "short_name": "MHO 配裝",
-  "description": "Monster Hunter Outlanders 防具配裝計算器：揀武器同 AR，搵最佳防具組合同所需素材",
+  "name": "旅人配裝器",
+  "short_name": "旅人配裝",
+  "description": "魔物獵人：旅人 防具配裝：冒險等級 46 各屬性配裝同升級素材",
   "lang": "zh-Hant",
   "start_url": "./",
   "scope": "./",

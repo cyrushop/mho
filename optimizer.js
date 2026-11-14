@@ -19,14 +19,14 @@
 
   // Weapon types available at the 2026-10-29 global launch (8 types).
   const WEAPON_TYPES = [
-    { id: 'great-sword', name: '大劍 Great Sword' },
-    { id: 'long-sword', name: '太刀 Long Sword' },
-    { id: 'dual-blades', name: '雙劍 Dual Blades' },
-    { id: 'hammer', name: '大錘 Hammer' },
-    { id: 'lance', name: '長槍 Lance' },
-    { id: 'charge-blade', name: '盾斧 Charge Blade' },
-    { id: 'heavy-bowgun', name: '重弩 Heavy Bowgun' },
-    { id: 'bow', name: '弓 Bow' },
+    { id: 'great-sword', name: '大劍' },
+    { id: 'long-sword', name: '太刀' },
+    { id: 'dual-blades', name: '雙劍' },
+    { id: 'hammer', name: '大錘' },
+    { id: 'lance', name: '長槍' },
+    { id: 'charge-blade', name: '充能斧' },
+    { id: 'heavy-bowgun', name: '重弩' },
+    { id: 'bow', name: '弓' },
   ];
 
   const SKILL_UNIT = 1e8;  // one weighted skill level outranks any owned/defense tie-break

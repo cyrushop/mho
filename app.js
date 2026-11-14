@@ -5,10 +5,15 @@
   const KEY = 'mho-armor-v1';
   const $ = id => document.getElementById(id);
 
-  // Skill suggestions taken from published build guides (Game8, checked 2026-11-14).
-  // Skill names are as the guides wrote them; they only work if your data uses the same names.
+  // 攻略建議技能（Game8／GameWith，2026-11-14 核對）。
+  // 技能嘅遊戲繁中譯名未核實，所以顯示暫譯；加入目標時用英文原名，方便對應數據。
+  const ZH = {
+    'Fire Damage Up': '火屬性傷害提升', 'Thunder Damage Up': '雷屬性傷害提升',
+    'Spirit Bind Blade': '練氣增傷技能', 'Charge Enhancement': '蓄力強化', 'Intimidation': '威嚇',
+    'Capacity Boost': '裝填強化', 'Offensive Defense': '攻勢防禦', 'Bow Skill Boost': '弓技強化',
+  };
   const PRESETS = {
-    'long-sword': { skills: ['Flash Draw'], src: 'https://game8.co/games/Monster-Hunter-Outlanders/archives/618475' },
+    'long-sword': { skills: ['Fire Damage Up', 'Spirit Bind Blade'], src: 'https://gamewith.ai/monster-hunter-outlanders/en/articles/best-long-sword-builds' },
     'hammer': { skills: ['Charge Enhancement', 'Intimidation'], src: 'https://game8.co/games/Monster-Hunter-Outlanders/archives/635685' },
     'heavy-bowgun': { skills: ['Capacity Boost', 'Offensive Defense'], src: 'https://game8.co/games/Monster-Hunter-Outlanders/archives/618476' },
     'bow': { skills: ['Bow Skill Boost', 'Thunder Damage Up'], src: 'https://game8.co/games/Monster-Hunter-Outlanders/archives/635378' },
@@ -86,7 +91,7 @@
     if (!db.armor.length) {
       box.append(el('div', { class: 'note bad' },
         el('b', {}, '未有防具數據。'),
-        ' App 已經可以用，但需要先匯入 Outlanders 防具數據（技能、套裝、素材）先計到配裝。去「數據」分頁匯入 JSON／CSV。',
+        ' 計算器可以用，但要先匯入旅人嘅防具數據（技能、套裝、素材）先計到配裝。去「數據」分頁匯入 JSON／CSV。',
       ));
     } else if (db.meta && db.meta.verified === false) {
       box.append(el('div', { class: 'note' }, `數據未標記為已核實（${db.armor.length} 件防具）。結果僅供參考，請以遊戲內數值為準。`));
@@ -101,7 +106,7 @@
     wn.replaceChildren(
       el('option', { value: '' }, list.length ? '— 唔指定 —' : '（數據庫未有武器）'),
       ...list.map(w => el('option', { value: w.name, selected: w.name === S.weaponName },
-        `${w.name}${w.rarity ? ` ★${w.rarity}` : ''}`)),
+        `${w.name}${w.rarity ? ` 稀有度${w.rarity}` : ''}`)),
     );
     wn.disabled = !list.length;
     $('weaponSkills').value = S.weaponSkills || '';
@@ -118,22 +123,22 @@
     const maxR = Math.max(12, ...rarities);
     const sel = $('rarityOverride');
     sel.replaceChildren(
-      el('option', { value: 'auto', selected: S.rarity === 'auto' }, '按 AR 自動'),
+      el('option', { value: 'auto', selected: S.rarity === 'auto' }, '按冒險等級自動'),
       el('option', { value: 'none', selected: S.rarity === 'none' }, '唔限制'),
-      ...Array.from({ length: maxR }, (_, i) => i + 1).map(r => el('option', { value: String(r), selected: S.rarity === String(r) }, `★${r} 或以下`)),
+      ...Array.from({ length: maxR }, (_, i) => i + 1).map(r => el('option', { value: String(r), selected: S.rarity === String(r) }, `稀有度 ${r} 或以下`)),
     );
     const info = $('capInfo');
     info.replaceChildren();
     const cap = currentCap();
     if (S.rarity === 'auto') {
-      if (!S.ar) info.append('輸入 AR 會自動計防具稀有度上限。');
-      else if (cap == null) info.append(el('span', { style: 'color:var(--warn)' }, `AR ${S.ar} 低過已知數據點，上限未核實：請喺右邊手動揀。`));
+      if (!S.ar) info.append('輸入冒險等級會自動計防具稀有度上限。');
+      else if (cap == null) info.append(el('span', { style: 'color:var(--warn)' }, `冒險等級 ${S.ar} 低過已知數據點，上限未核實：請喺右邊手動揀。`));
       else {
         const exact = db.arCaps.some(c => c.ar === Number(S.ar));
         const next = db.arCaps.find(c => c.ar > Number(S.ar));
-        info.append(`AR ${S.ar} → 稀有度上限 ★${cap}`);
+        info.append(`冒險等級 ${S.ar} → 稀有度上限 ${cap}`);
         if (!exact && next) info.append(el('span', { style: 'color:var(--warn)' },
-          `（已知下一級：AR ${next.ar} → ★${next.rarity}；中間級數未核實，用咗保守值。如知道實際上限可手動揀）`));
+          `（已知下一級：冒險等級 ${next.ar} → 稀有度 ${next.rarity}；中間級數未核實，用咗保守值。如知道實際上限可手動揀）`));
         info.append(' 來源：', link('https://gamewith.ai/monster-hunter-outlanders/en/articles/upgrade-limit-and-dismantle', 'GameWith'));
       }
     } else {
@@ -151,13 +156,13 @@
     }
     const known = new Set(allSkillNames().concat([...setSkillNames()]));
     box.append(el('div', { class: 'small-text muted', style: 'margin-bottom:6px' },
-      '攻略建議（撳一下加入）· 來源：', link(p.src, 'Game8'), ' · 技能名需同數據一致'));
+      '攻略建議（撳一下加入）· 來源：', link(p.src, p.src.includes('gamewith') ? 'GameWith' : 'Game8'), ' · 技能中文名係暫譯，加入時用英文原名對應數據'));
     box.append(el('div', { class: 'chips', style: 'margin-bottom:10px' },
       p.skills.map(n => el('button', {
         class: 'chip' + (known.has(n) ? ' hit' : ''),
         title: known.has(n) ? '數據庫有呢個技能' : '數據庫未見呢個技能名',
         onclick: () => addTarget(n),
-      }, '＋ ' + n + (known.size && !known.has(n) ? ' ⚠' : '')))));
+      }, '＋ ' + (ZH[n] ? `${ZH[n]}（暫譯・${n}）` : n) + (known.size && !known.has(n) ? ' ⚠' : '')))));
   }
 
   function renderTargets() {

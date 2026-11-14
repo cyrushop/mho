@@ -1,7 +1,7 @@
 // Offline support.
 // App shell: serve from cache, refresh in the background.
 // Data (data/*.json): network first so updates show up, cache as offline fallback.
-const CACHE = 'mho-armor-v3';
+const CACHE = 'mho-armor-v4';
 const ASSETS = [
   './',
   './index.html',
